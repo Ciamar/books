@@ -5,17 +5,22 @@
   "main": "app.js",
   "scripts": {
     "start": "node app.js",
-    "app": "nodemon app.js"
+    "app": "nodemon server.js",
+    "test": "nodemon --exec 'mocha -R min'"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.1",
+    "chai": "^4.3.4",
+    "chai-http": "^4.3.0",
     "config": "^3.3.6",
     "cors": "^2.8.5",
     "express": "^4.17.2",
+    "mocha": "^9.1.3",
     "mongoose": "^6.1.4",
+    "supertest": "^6.1.6",
     "validation": "^0.0.1"
   },
   "devDependencies": {
