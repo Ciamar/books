@@ -1,6 +1,7 @@
 server/node_modules
 
 server/config/default.json
+server/config/test.json
 
 
 # dependencies

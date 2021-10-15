@@ -1,20 +1,33 @@
 const express = require('express');
 var cors = require('cors');
+const bodyParser = require('body-parser');
+const config = require('config');
+const connectDB = require('./config/db');
+
+const urlencodedParser = bodyParser.urlencoded({extended: false});
 
 // routes
+const users = require('./routes/api/users');
 const books = require('./routes/api/books');
 
 const app = express();
 
-// cors
-app.use(cors({ origin: true, credentials: true }));
+
 
 // Init Middleware
+app.use(cors({ origin: true, credentials: true }));
+app.use(bodyParser.json(), urlencodedParser);
 app.use(express.json({ extended: false }));
 
-app.get('/', (req, res) => res.send('Hello world!'));
 
 // use Routes
-app.use('/api/books', books);
+app.use('/books', books);
+app.use('/', users);
 
-module.exports = app;
+// Connect Database
+connectDB();
+
+const port = config.get('port');
+
+exports.server = app.listen(port, () => console.log(`server starting on port ${port}!`));;
+exports.app = app;
