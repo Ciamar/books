@@ -12,16 +12,16 @@ function verifyJWT(req, res, next) {
       if (err) return res.status(401).json({
         isLoggedIn: false,
         message: "Failed to authenticate"
-      })
+      });
 
       req.user = {};
       req.user.id = decoded.id;
       req.user.username = decoded.username;
       next();
-    })
+    });
 
   } else {
-    res.status(401).json({message: "Incorrect token given", isLoggedIn: false})
+    res.status(401).json({message: "Incorrect token given", isLoggedIn: false});
   }
 
 

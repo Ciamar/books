@@ -3,7 +3,6 @@ var cors = require('cors');
 const bodyParser = require('body-parser');
 const config = require('config');
 const connectDB = require('./config/db');
-
 const urlencodedParser = bodyParser.urlencoded({extended: false});
 
 // routes
@@ -12,13 +11,10 @@ const books = require('./routes/api/books');
 
 const app = express();
 
-
-
 // Init Middleware
 app.use(cors({ origin: true, credentials: true }));
 app.use(bodyParser.json(), urlencodedParser);
 app.use(express.json({ extended: false }));
-
 
 // use Routes
 app.use('/books', books);

@@ -43,6 +43,11 @@ router.post(
     let user = req.body;
 
     let dbuser = await User.findOne({username: user.username});
+
+    if (!dbuser) {
+      return res.status(401).json({message: "Invalid useranme or password"});
+    }
+
     let validPassword = await dbuser.isValidPassword(user.password);
 
     if (validPassword) {
