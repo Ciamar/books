@@ -1,17 +1,21 @@
 import React from 'react';
 import '../App.css';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import BookCard from './BookCard';
+import authHeader from '../_helpers/auth-header.js';
 
 
 function ShowBookList(props) {
   const [books, setBooks] = React.useState(null);
 
+  const { user } = useParams();
+
   React.useEffect(() => {
     axios
-      .get('http://localhost:8888/api/books')
+      .get('http://localhost:8888/books/'+ user, authHeader())
       .then(res => {
+        console.log(res.data);
         setBooks(res.data)
       })
       .catch(err => {
@@ -39,7 +43,7 @@ function ShowBookList(props) {
           </div>
 
           <div className="col-md-11">
-            <Link to="/create-book" className="btn btn-outline-warning float-right">
+            <Link to= {`/${user}/create-book`} className="btn btn-outline-warning float-right">
               + Add New Book
             </Link>
             <br />

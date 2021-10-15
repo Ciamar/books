@@ -1,19 +1,14 @@
-Application to keep track of read books and get reading stadistics.
+Playin arround with MERN stack and learning react...
 
-Created using nodejs, express, mongodb and react.
 
-Instructions:
-
-- Create default.json file in config and add "mongoURI" and "testURI" variables with uris for the deveolopment and test
-
-- go to server folder
+- server
 
 '''
 npm install
 npm run app
 '''
 
-- go to client folder
+- client
 
 '''
 npm install

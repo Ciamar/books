@@ -9,7 +9,13 @@ const verifyJWT = require('../../middleware/verify');
 router.get('/:user', verifyJWT, (req, res) => {
   User.findOne({username: req.params.user})
       .then(user => {
-        res.status(200).json({books: user.books});
+        Book.find({
+          '_id': { $in: user.books}
+        }, (err, docs) => {
+            res.status(200).json(docs);
+        });
+
+
       })
       .catch(err => res.status(404).json({error: err}));
 });

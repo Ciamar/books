@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import '../App.css';
 import axios from 'axios';
+
+import authHeader from '../_helpers/auth-header.js';
 
 
 function CreateBook(props) {
@@ -15,13 +17,15 @@ function CreateBook(props) {
     publisher:''
   });
 
+  const { user } = useParams();
+
   let history = useNavigate();
 
   const onSubmit = (e) => {
     e.preventDefault();
 
     axios
-      .post('http://localhost:8888/api/books', book)
+      .post('http://localhost:8888/books/' + user, book, authHeader())
       .then(res => {
         setBook({
           title: '',
@@ -31,7 +35,7 @@ function CreateBook(props) {
           published_date:'',
           publisher:''
         })
-        history("/");
+        history("/"+user);
       })
       .catch(err => {
         console.log("Error in CreateBook!");

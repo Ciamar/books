@@ -4,7 +4,7 @@ const secret = config.get('jwt_secret');
 
 
 function verifyJWT(req, res, next) {
-  const token = req.headers["x-access-token"];
+  const token = req.headers.authorization;
 
   if (token) {
     jwt.verify(token, secret, (err, decoded) => {

@@ -19,7 +19,7 @@ function CreateBook(props) {
     axios
       .post('http://localhost:8888/login', user)
       .then(res => {
-        localStorage.setItem("token", res.token);
+        localStorage.setItem("token", res.data.token);
         history("/"+user.username);
       })
       .catch(err => {
