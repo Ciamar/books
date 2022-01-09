@@ -1,6 +1,0 @@
-{
-  "mongoURI":
-    "mongodb+srv://ciamar:68KFGtsM9hYp2jm@cluster0.rdxq2.mongodb.net/testDatabase?retryWrites=true&w=majority",
-  "port": 8889,
-  "jwt_secret": "averysecretstring"
-}
